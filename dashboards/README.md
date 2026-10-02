@@ -1,6 +1,8 @@
 # BI Analytics Showcase
 
-This directory contains the final Business Intelligence artifacts connected to the **DataMart-Flex** star schema.
+This directory contains the final Business Intelligence artifacts connected to the **DataMart-Flex** star schema:
+
+`DataMart-Flex_Dashboard.pbix`
 
 ## Power BI Integration
 
@@ -17,6 +19,10 @@ the [DAX & BI Measures](../docs/architecture/dax_measures.md) documentation.
 4. If prompted to refresh or update credentials, edit the Data Source settings to point to your local absolute path of
    `datamart.duckdb`.
 
-*(Optional: Add a screenshot of the dashboard below by dropping an image file into this folder and uncommenting the line
-below)*
-<!-- ![Power BI Dashboard Preview](preview.png) -->
+---
+
+![Power BI Dashboard Preview](images/dashboard.jpeg)
+
+---
+
+![Power BI Star Schema](images/star_schema.jpeg)
