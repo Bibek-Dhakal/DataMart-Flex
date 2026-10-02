@@ -6,8 +6,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-def build_data_mart():
-    db_path = os.getenv("DUCKDB_PATH", "data/datamart.duckdb")
+def build_data_mart(data_dir="data"):
+    # Ensure paths are POSIX-compliant for DuckDB SQL commands (important on Windows)
+    data_dir_posix = data_dir.replace("\\", "/")
+    db_path = os.getenv("DUCKDB_PATH", f"{data_dir}/datamart.duckdb")
     print(f"Building Star Schema in {db_path}...")
 
     # Connect to DuckDB
@@ -31,31 +33,31 @@ def build_data_mart():
 
     # 2. Dim_Customers
     con.execute(
-        """
+        f"""
         CREATE OR REPLACE TABLE Dim_Customers AS
-        SELECT * FROM read_csv_auto('data/raw_customers.csv');
+        SELECT * FROM read_csv_auto('{data_dir_posix}/raw_customers.csv');
     """
     )
 
     # 3. Dim_Products
     con.execute(
-        """
+        f"""
         CREATE OR REPLACE TABLE Dim_Products AS
-        SELECT * FROM read_csv_auto('data/raw_products.csv');
+        SELECT * FROM read_csv_auto('{data_dir_posix}/raw_products.csv');
     """
     )
 
     # 4. Dim_Channels
     con.execute(
-        """
+        f"""
         CREATE OR REPLACE TABLE Dim_Channels AS
-        SELECT * FROM read_csv_auto('data/raw_channels.csv');
+        SELECT * FROM read_csv_auto('{data_dir_posix}/raw_channels.csv');
     """
     )
 
     # 5. Fact_Orders
     con.execute(
-        """
+        f"""
         CREATE OR REPLACE TABLE Fact_Orders AS
         SELECT
             t.order_id,
@@ -68,7 +70,7 @@ def build_data_mart():
             (t.quantity * t.unit_price) AS sales_amount,
             t.cost_amount,
             t.discount_amount
-        FROM read_csv_auto('data/raw_transactions.csv') t;
+        FROM read_csv_auto('{data_dir_posix}/raw_transactions.csv') t;
     """
     )
 

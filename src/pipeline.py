@@ -12,11 +12,17 @@ def run_pipeline():
     num_customers = int(os.getenv("MOCK_NUM_CUSTOMERS", 5000))
     num_products = int(os.getenv("MOCK_NUM_PRODUCTS", 200))
     num_txns = int(os.getenv("MOCK_NUM_TRANSACTIONS", 100000))
+    data_dir = os.getenv("DATA_DIR", "data")
 
     print("=== DataMart-Flex Pipeline Started ===")
-    generate_data(num_customers=num_customers, num_products=num_products, num_transactions=num_txns)
+    generate_data(
+        num_customers=num_customers,
+        num_products=num_products,
+        num_transactions=num_txns,
+        output_dir=data_dir,
+    )
 
-    build_data_mart()
+    build_data_mart(data_dir=data_dir)
     print("=== DataMart-Flex Pipeline Completed Successfully ===")
 
 
