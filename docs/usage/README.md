@@ -11,7 +11,7 @@ This script coordinates:
 ### Command
 
 ```bash
-python src/pipeline.py
+python -m src.pipeline
 ```
 
 ## Environment Variables

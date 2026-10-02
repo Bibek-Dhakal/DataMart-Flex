@@ -21,7 +21,7 @@ source .venv/bin/activate  # Or .venv\Scripts\activate on Windows
 pip install -e ".[dev,notebooks]"
 
 # 2. Run the Pipeline
-python src/pipeline.py
+python -m src.pipeline
 ```
 
 This will output `data/datamart.duckdb` containing the fully materialized star schema.
