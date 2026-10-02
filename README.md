@@ -28,6 +28,7 @@ This will output `data/datamart.duckdb` containing the fully materialized star s
 
 ## Documentation Index
 
+- [BI Dashboards Showcase](dashboards/README.md)
 - [Architecture & Design](docs/architecture/README.md)
 - [Data Dictionary](docs/architecture/data_dictionary.md)
 - [DAX & BI Measures](docs/architecture/dax_measures.md)

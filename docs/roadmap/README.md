@@ -9,6 +9,6 @@
 
 ## Phase 2: Orchestration & BI Integration
 
+- [x] Implement initial Power BI template/showcase connecting to the DuckDB Star Schema.
 - [ ] Migrate scheduling to Apache Airflow or GitHub Actions cron triggers.
-- [ ] Export automated reporting endpoints for Tableau/Power BI ingestion.
 - [ ] Implement dbt (Data Build Tool) on top of DuckDB for more robust testing and modeling.
